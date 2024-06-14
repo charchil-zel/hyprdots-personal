@@ -1,0 +1,77 @@
+
+# custom aliases charchil
+alias cls='clear'
+alias rm='rm -rf'
+alias cp='cp -r'
+alias  cs='clear' # clear terminal
+alias  l='eza -lh  --icons=auto' # long list
+alias ls='eza -1   --icons=auto' # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias lt='eza --icons=auto --tree' # list folder as tree
+alias zshrc='nvim ~/.zshrc'
+alias bashrc='nvim ~/.bashrc'
+alias key='nvim ~/.config/hypr/keybindings.conf'
+alias a='nvim'
+alias j='z'
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias tar='tar -xvf'
+alias zshalias='nvim ~/.zshalias'
+alias reload='source ~/.zshrc && source ~/.bashrc'
+alias zshhis='nvim ~/.zsh_history'
+alias t='tmux'
+alias tco='nvim ~/.config/tmux/tmux.conf'
+alias tns='tmux new-session -s'
+alias tas='tmux attach-session -t'
+alias tds='tmux detach'
+alias tks='tmux kill-session -t'
+
+#custom alias for pacman 
+alias install='sudo pacman -S'
+alias remove='sudo pacman -R'
+alias find='sudo pacman -F'
+
+
+#custom alias for aurhelper (yay)
+alias i='$aurhelper -S' #install package
+alias un='$aurhelper -Rns' # uninstall package
+alias up='$aurhelper -Syu' # update system/package/aur
+alias li='$aurhelper -Qs' # list installed package
+alias la='$aurhelper -Ss' # list availabe package
+alias rc='$aurhelper -Sc' # remove unused cache
+alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+
+# alias for systemctl actions
+alias stop='sudo systemctl stop'
+alias status='sudo systemctl status'
+alias restart='sudo systemctl restart'
+alias start='sudo systemctl start'
+alias enable='sudo systemctl enable'
+alias disable='sudo systemctl disable'
+
+
+
+
+# Handy change dir shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+alias mkdir='mkdir -p'
+
+
+
+
+# Alias for dotfiles sync 
+
+alias configsync='config add .config
+                  config commit -m "small changes"
+                  config push'
+alias gitsync='j ~/dotfiles-stow && git add . && git commit -m "small changes" && git push && j'
+
+
+#Bhashkar
+alias vb='NVIM_APPNAME=vb nvim'

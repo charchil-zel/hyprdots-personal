@@ -17,6 +17,9 @@ brightnessctl                                          # screen brightness contr
 udiskie                                                # manage removable media
 zoxide                                                 # a better cd command 
 bat                                                    # a better cat with syntax highlighting 
+fzf
+fd
+tmux
 
 # --------------------------------------------------- // Display Manager
 sddm                                                   # display manager for KDE plasma

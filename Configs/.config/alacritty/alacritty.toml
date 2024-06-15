@@ -1,0 +1,24 @@
+live_config_reload = true
+
+import = ["~/.config/alacritty/rosepine-dawn.toml"]
+
+
+
+[window]
+opacity = 0.6
+dynamic_padding=false
+decorations="buttonless"
+
+[font]
+size = 18
+
+[font.normal]
+family="CaskaydiaCove Nerd Font Mono"
+style="medium"
+
+[env]
+TERM = "xterm-256color"
+
+[shell]
+program = "/bin/bash"
+

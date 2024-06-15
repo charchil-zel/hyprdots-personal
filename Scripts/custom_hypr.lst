@@ -20,6 +20,8 @@ bat                                                    # a better cat with synta
 fzf
 fd
 tmux
+stow
+btop
 
 # --------------------------------------------------- // Display Manager
 sddm                                                   # display manager for KDE plasma
@@ -62,20 +64,18 @@ kvantum                                                # svg based qt6 theme eng
 kvantum-qt5                                            # svg based qt5 theme engine
 qt5-wayland                                            # wayland support in qt5
 qt6-wayland                                            # wayland support in qt6
+starship|bash
 
 # --------------------------------------------------- // Applications
 firefox                                                # browser
 kitty                                                  # terminal
 dolphin                                                # kde file manager
-ark                                                    # kde file archiver
 vim                                                    # terminal text editor
 neovim                                                 # terminal text editor 
 # --------------------------------------------------- // Shell
 eza|zsh                                                # file lister for zsh
 oh-my-zsh-git|zsh                                      # plugin manager for zsh
 zsh-theme-powerlevel10k-git|zsh oh-my-zsh-git          # theme for zsh
-lsd|fish                                               # file lister for fish
-starship|fish                                          # customizable shell prompt
 fastfetch                                              # system information fetch tool
 
 # --------------------------------------------------- // HyDE

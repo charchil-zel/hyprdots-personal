@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #|---/ /+--------------------------+---/ /|#
-#|--/ /-| Main installation script |--/ /-|#
-#|-/ /--| Prasanth Rangan          |-/ /--|#
+#|--/ /-| Main installation script   |--/ /-|#
+#|-/ /--| Created by Charchil Neupane|-/ /--|#
 #|/ /---+--------------------------+/ /---|#
 
 cat << "EOF"
@@ -13,6 +13,22 @@ cat << "EOF"
      /  _  \    |_   _|   | __ | || | |) | _| 
     /  | | ~\     |_|     |_||_|\_, |___/|___|
    /.-'   '-.\                  |__/          
+
+
+    ______  __   ________                    __    _ __   
+   / __ ) \/ /  / ____/ /_  ____ ___________/ /_  (_) /   
+  / __  |\  /  / /   / __ \/ __ `/ ___/ ___/ __ \/ / /    
+ / /_/ / / /  / /___/ / / / /_/ / /  / /__/ / / / / /     
+/_____/ /_/   \____/_/ /_/\__,_/_/   \___/_/ /_/_/_/      
+   / | / /__  __  ______  ____ _____  ___                 
+  /  |/ / _ \/ / / / __ \/ __ `/ __ \/ _ \                
+ / /|  /  __/ /_/ / /_/ / /_/ / / / /  __/                
+/_/ |_/\___/\__,_/ .___/\__,_/_/ /_/\___/                 
+                /_/                                       
+
+
+
+
 
 -------------------------------------------------
 
@@ -113,26 +129,12 @@ EOF
     # get user prefs #
     #----------------#
     if ! chk_list "aurhlpr" "${aurList[@]}"; then
-        echo -e "Available aur helpers:\n[1] yay\n[2] paru"
-        prompt_timer 120 "Enter option number"
-
-        case "${promptIn}" in
-            1) export getAur="yay" ;;
-            2) export getAur="paru" ;;
-            *) echo -e "...Invalid option selected..." ; exit 1 ;;
-        esac
+      export getAur="yay" 
     fi
 
     if ! chk_list "myShell" "${shlList[@]}"; then
-        echo -e "Select shell:\n[1] zsh\n[2] fish"
-        prompt_timer 120 "Enter option number"
-
-        case "${promptIn}" in
-            1) export myShell="zsh" ;;
-            2) export myShell="fish" ;;
-            *) echo -e "...Invalid option selected..." ; exit 1 ;;
-        esac
-        echo "${myShell}" >> "${scrDir}/install_pkg.lst"
+      export myShell="zsh" 
+    echo "${myShell}" >> "${scrDir}/install_pkg.lst"
     fi
 
     #--------------------------------#
@@ -205,7 +207,7 @@ if [ ${flg_Service} -eq 1 ]; then
 
 EOF
 
-    while read servChk; do
+    while read -r servChk; do
 
         if [[ $(systemctl list-units --all -t service --full --no-legend "${servChk}.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "${servChk}.service" ]]; then
             echo -e "\033[0;33m[SKIP]\033[0m ${servChk} service is active..."

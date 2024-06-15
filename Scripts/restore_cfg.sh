@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #|---/ /+--------------------------------+---/ /|#
 #|--/ /-| Script to restore hyde configs |--/ /-|#
-#|-/ /--| Prasanth Rangan                |-/ /--|#
+#|-/ /--| Charchil Neupane               |-/ /--|#
 #|/ /---+--------------------------------+/ /---|#
 
 scrDir=$(dirname "$(realpath "$0")")

@@ -1,5 +1,6 @@
 N|Y|${HOME}|.zshrc .p10k.zsh .zshalias|zsh oh-my-zsh-git zsh-theme-powerlevel10k 
 N|Y|${HOME}/.config|spotify-flags.conf|spotify
+N|Y|${HOME}/.config|starship.toml|bash
 Y|Y|${HOME}/.config|dunst|dunst
 Y|Y|${HOME}/.config/hyde|wallbash|hyprland
 Y|Y|${HOME}/.config/hypr|animations.conf hyprland.conf windowrules.conf themes|hyprland

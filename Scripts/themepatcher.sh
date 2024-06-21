@@ -1,4 +1,5 @@
-#git clone --depth 1 https://github.com/prasanthrangan/hyprdotsgit clone --depth 1 https://github.com/prasanthrangan/hyprdots!/usr/bin/env bash
+#!/usr/bin/env bash
+#git clone --depth 1 https://github.com/prasanthrangan/hyprdots
 #|---/ /+------------------------------+---/ /|#
 #|--/ /-| Script to patch custom theme |--/ /-|#
 #|-/ /--| kRHYME7                      |-/ /--|#

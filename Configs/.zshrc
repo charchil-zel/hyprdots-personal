@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 
@@ -5,7 +12,7 @@ ZSH=/usr/share/oh-my-zsh/
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # List of plugins used
-plugins=()
+plugins=(git sudo zsh-256color zsh-autosuggestions zsh-syntax-highlighting copyfile dirhistory)
 source $ZSH/oh-my-zsh.sh
 
 # source alias file located in $HOME/zshalias
@@ -30,6 +37,10 @@ function command_not_found_handler {
     fi
     return 127
 }
+
+
+
+
 
 # Detect the AUR wrapper
 if pacman -Qi yay &>/dev/null ; then
@@ -60,30 +71,9 @@ function in {
     fi
 }
 
-# Helpful aliases
-alias  c='clear' # clear terminal
-alias  l='eza -lh  --icons=auto' # long list
-alias ls='eza -1   --icons=auto' # short list
-alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias ld='eza -lhD --icons=auto' # long list dirs
-alias lt='eza --icons=auto --tree' # list folder as tree
-alias un='$aurhelper -Rns' # uninstall package
-alias up='$aurhelper -Syu' # update system/package/aur
-alias pl='$aurhelper -Qs' # list installed package
-alias pa='$aurhelper -Ss' # list availabe package
-alias pc='$aurhelper -Sc' # remove unused cache
-alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
-alias vc='code' # gui code editor
 
-# Handy change dir shortcuts
-alias ..='cd ..'
-alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
 
-# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
-alias mkdir='mkdir -p'
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -118,18 +108,58 @@ export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude.git"
 
 # brew environment variable
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 
-# history
+[[ ! -f ~/dotfiles-stow/shell/.config/zsh/.p10k.zsh ]] || source ~/dotfiles-stow/shell/.config/zsh/.p10k.zsh
+# source /home/charchil/sysenv/system/bin/activate
+
+export GEM_HOME=$HOME/.gem
+
+
+
+# custom function 
+jpro() {
+    local json_file="$1"
+    
+    if [[ -f "$json_file" ]]; then
+        local temp_file=$(mktemp)
+
+        jq '.' "$json_file" > "$temp_file" && mv "$temp_file" "$json_file"
+    else
+        echo "File $json_file does not exist."
+    fi
+}
+
+
+airpods() {
+
+bluetoothctl <<EOF
+power on 
+agent on 
+default-agent
+scan on 
+pair 0C:A8:91:1E:21:C1
+connect 0C:A8:91:1E:21:C1
+EOF
+}
+
+## History
 
 export HISTFILE="$HOME/.zsh_history"
-setopt hist_ignore_dups     # do not record an event that was just recorded again
-setopt hist_ignore_all_dups # delete an old recorded event if a new event is a duplicate
-setopt hist_ignore_space    # do not record an event starting with a space
-setopt hist_save_no_dups    # do not write a duplicate event to the history file
-setopt inc_append_history   # write to the history file immediately, not when the shell exits
-setopt share_history        # share history between terminals
-
-
+export HISTSIZE=10000000
+export SAVEHIST=10000000
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
